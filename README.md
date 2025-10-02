@@ -60,25 +60,6 @@ src/
 └── index.css          # Global CSS variables and base styles
 ```
 
-## 🎨 Design System
-
-### Color Palette
-- **Primary Background**: `#0a0a0f` - Deep space black
-- **Secondary Background**: `#1a1a2e` - Dark blue-gray
-- **Accent Colors**: Blue gradients (`#667eea` to `#764ba2`)
-- **Text Colors**: White primary, light gray secondary
-- **Success/Warning/Error**: Standard semantic colors
-
-### Typography
-- **Primary Font**: Inter - Clean, modern sans-serif
-- **Code Font**: Space Mono - Monospace for technical content
-
-### Components
-- **Cards**: Glassmorphism effect with backdrop blur
-- **Buttons**: Gradient backgrounds with hover animations
-- **Forms**: Clean inputs with focus states
-- **Charts**: Dark theme with accent colors
-
 ## 🌟 Key Features
 
 ### Home Page
@@ -110,33 +91,6 @@ src/
 - NASA mission information
 - Technology stack overview
 - Project impact metrics
-
-## 🔧 Customization
-
-### Theming
-Colors and spacing can be customized by modifying CSS variables in `src/index.css`:
-
-```css
-:root {
-  --primary-bg: #0a0a0f;
-  --secondary-bg: #1a1a2e;
-  --accent-text: #64b5f6;
-  /* ... other variables */
-}
-```
-
-### Adding New Pages
-1. Create a new component in `src/pages/`
-2. Add corresponding CSS file
-3. Import and add route in `App.js`
-4. Update navigation in `Navbar.js`
-
-## 📱 Responsive Design
-
-The application is fully responsive with breakpoints at:
-- **Desktop**: 1200px+
-- **Tablet**: 768px - 1199px
-- **Mobile**: < 768px
 
 ## 🚀 Deployment
 
