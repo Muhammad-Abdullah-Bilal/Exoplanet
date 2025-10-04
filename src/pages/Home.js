@@ -1,180 +1,199 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Advanced3DSolarSystem from '../components/Advanced3DSolarSystem';
+import DemoModal from '../components/DemoModal';
+import InteractiveStory from '../components/InteractiveStory';
+import ExoplanetHunt from '../components/ExoplanetHunt';
+import StarExplorer from '../components/StarExplorer';
 import './Home.css';
 
 const Home = () => {
-  const features = [
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showDemo, setShowDemo] = useState(false);
+  const [showStory, setShowStory] = useState(false);
+  const [showHunt, setShowHunt] = useState(false);
+  const [showExplorer, setShowExplorer] = useState(false);
+
+  const missions = [
     {
-      icon: '📤',
-      title: 'Upload Data',
-      description: 'Upload your transit photometry data and let our AI analyze potential exoplanet candidates.',
-      link: '/upload'
+      id: 1,
+      date: 'OCTOBER 5, 2025 AT 11:00 A.M.',
+      title: 'New Horizon',
+      description: 'Embark on a thrilling adventure to the distant reaches of our galaxy, exploring undiscovered worlds and encountering strange alien civilizations.',
+      image: 'https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=400&h=300&fit=crop',
+      type: 'mission',
+      status: 'active'
     },
     {
-      icon: '🔍',
-      title: 'Explore Gallery',
-      description: 'Browse through confirmed exoplanets with interactive visualizations and detailed information.',
-      link: '/gallery'
+      id: 2,
+      date: 'OCTOBER 4, 2025 AT 3:30 P.M.',
+      title: 'Galactic Odyssey',
+      description: 'Join a brave team of space explorers on a perilous journey across the galaxy, pushing the boundaries of human knowledge and discovery.',
+      image: 'https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=400&h=300&fit=crop',
+      type: 'mission',
+      status: 'completed'
     },
     {
-      icon: '📊',
-      title: 'View Results',
-      description: 'Analyze detection results with confidence scores and detailed explanations.',
-      link: '/results'
+      id: 3,
+      date: 'OCTOBER 3, 2025 AT 10:00 A.M.',
+      title: 'Cosmic Quest',
+      description: 'Enter a new realm of space exploration and adventure, as you journey through uncharted galaxies, encountering strange and wondrous sights along the way.',
+      image: 'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=400&h=300&fit=crop',
+      type: 'mission',
+      status: 'upcoming'
+    },
+    {
+      id: 4,
+      date: 'OCTOBER 1, 2025 AT 11:00 A.M.',
+      title: 'Stellar Bound',
+      description: 'Join a team of brave space explorers on a perilous journey through the cosmos, encountering mysterious phenomena and ancient secrets.',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop',
+      type: 'mission',
+      status: 'completed'
     }
   ];
 
-  const stats = [
-    { number: '5000+', label: 'Exoplanets Detected' },
-    { number: '95%', label: 'Model Accuracy' },
-    { number: '3', label: 'NASA Missions' },
-    { number: '24/7', label: 'AI Processing' }
-  ];
+  const filteredMissions = missions.filter(mission =>
+    mission.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    mission.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
-    <div className="home">
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="container">
-          <div className="hero-content">
-            <h1 className="hero-title">
-              Discover <span className="text-gradient">Exoplanets</span> with AI
-            </h1>
-            <p className="hero-subtitle">
-              Harness the power of machine learning to detect exoplanets from NASA's Kepler, K2, and TESS mission data. 
-              Our advanced AI models analyze transit photometry to identify planetary candidates with unprecedented accuracy.
-            </p>
-            <div className="hero-actions">
-              <Link to="/upload" className="btn btn-primary">
-                📤 Start Analysis
-              </Link>
-              <Link to="/gallery" className="btn btn-secondary">
-                🔭 Explore Gallery
-              </Link>
+    <div className="home page-container">
+      <div className="home-header">
+        <h1 className="page-title">NASA Exoplanet Discovery</h1>
+        <button className="demo-btn" onClick={() => setShowDemo(true)}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+            <polygon points="10,8 16,12 10,16" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+
+      <div className="search-section">
+        <div className="search-bar">
+          <svg className="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="2"/>
+            <path d="m21 21-4.35-4.35" stroke="currentColor" strokeWidth="2"/>
+          </svg>
+          <input
+            type="text"
+            placeholder="Search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
+        </div>
+      </div>
+
+      <div className="missions-section">
+        {filteredMissions.map((mission) => (
+          <Link key={mission.id} to="/explorer" className="mission-card">
+            <div className="mission-image">
+              <img src={mission.image} alt={mission.title} />
+              <div className="mission-overlay"></div>
             </div>
+            <div className="mission-content">
+              <div className="mission-date">{mission.date}</div>
+              <h3 className="mission-title">{mission.title}</h3>
+              <p className="mission-description">{mission.description}</p>
+            </div>
+            <div className="mission-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      <div className="solar-system-section">
+        <h3>Interactive 3D Solar System</h3>
+        <Advanced3DSolarSystem />
+        <p className="system-description">
+          Explore a fully interactive 3D solar system with realistic planetary orbits, moons, and ring systems. Drag to rotate the view and watch planets move in real-time with accurate orbital mechanics.
+        </p>
+      </div>
+
+      <div className="interactive-experiences">
+        <h3>🚀 Interactive Experiences</h3>
+        <div className="experience-grid">
+          <div className="experience-card" onClick={() => setShowStory(true)}>
+            <div className="experience-icon">📖</div>
+            <h4>Discovery Journey</h4>
+            <p>Experience the thrilling story of discovering your first exoplanet through interactive storytelling</p>
+            <div className="experience-badge">Interactive Story</div>
           </div>
           
-          <div className="hero-visual">
-            <div className="planet-system">
-              <div className="star"></div>
-              <div className="orbit orbit-1">
-                <div className="planet planet-1"></div>
-              </div>
-              <div className="orbit orbit-2">
-                <div className="planet planet-2"></div>
-              </div>
-              <div className="orbit orbit-3">
-                <div className="planet planet-3"></div>
-              </div>
-            </div>
+          <div className="experience-card" onClick={() => setShowHunt(true)}>
+            <div className="experience-icon">🎯</div>
+            <h4>Exoplanet Hunt</h4>
+            <p>Test your skills in this gamified challenge to detect exoplanets using the transit method</p>
+            <div className="experience-badge">Mini Game</div>
           </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="features section">
-        <div className="container">
-          <h2 className="section-title">Powerful Features</h2>
-          <p className="section-subtitle">
-            Everything you need to analyze exoplanet data and make groundbreaking discoveries
-          </p>
           
-          <div className="grid grid-3">
-            {features.map((feature, index) => (
-              <div key={index} className="feature-card card">
-                <div className="feature-icon">
-                  <span style={{ fontSize: '48px' }}>{feature.icon}</span>
-                </div>
-                <h3 className="feature-title">{feature.title}</h3>
-                <p className="feature-description">{feature.description}</p>
-                <Link to={feature.link} className="feature-link">
-                  Learn More →
-                </Link>
-              </div>
-            ))}
+          <div className="experience-card" onClick={() => setShowExplorer(true)}>
+            <div className="experience-icon">🗺️</div>
+            <h4>Star Explorer</h4>
+            <p>Navigate an interactive star map and explore real exoplanetary systems in 3D</p>
+            <div className="experience-badge">3D Explorer</div>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Stats Section */}
-      <section className="stats section">
-        <div className="container">
-          <div className="grid grid-4">
-            {stats.map((stat, index) => (
-              <div key={index} className="stat-card">
-                <div className="stat-number">{stat.number}</div>
-                <div className="stat-label">{stat.label}</div>
-              </div>
-            ))}
+      <div className="quick-actions">
+        <Link to="/catalog" className="action-card">
+          <div className="action-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="2"/>
+              <circle cx="8" cy="8" r="2" fill="currentColor"/>
+              <circle cx="16" cy="8" r="1.5" fill="currentColor"/>
+              <circle cx="12" cy="16" r="1" fill="currentColor"/>
+            </svg>
           </div>
-        </div>
-      </section>
+          <span>Exoplanet Catalog</span>
+        </Link>
+        
+        <Link to="/simulator" className="action-card">
+          <div className="action-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+              <circle cx="12" cy="12" r="6" fill="currentColor" opacity="0.3"/>
+              <circle cx="12" cy="12" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+          <span>Transit Simulator</span>
+        </Link>
+        
+        <Link to="/discovery" className="action-card">
+          <div className="action-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <span>Discovery Cards</span>
+        </Link>
+      </div>
 
-      {/* Technology Section */}
-      <section className="technology section">
-        <div className="container">
-          <div className="tech-content">
-            <div className="tech-text">
-              <h2 className="section-title text-left">Advanced AI Technology</h2>
-              <p className="tech-description">
-                Our machine learning models are trained on extensive NASA datasets from multiple missions. 
-                Using deep learning techniques, we can identify subtle patterns in light curves that indicate 
-                planetary transits with remarkable precision.
-              </p>
-              <div className="tech-features">
-                <div className="tech-feature">
-                  <span className="tech-feature-icon">⚡</span>
-                  <span>Real-time Processing</span>
-                </div>
-                <div className="tech-feature">
-                  <span className="tech-feature-icon">🌍</span>
-                  <span>Multi-mission Support</span>
-                </div>
-                <div className="tech-feature">
-                  <span className="tech-feature-icon">📊</span>
-                  <span>Confidence Scoring</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="tech-visual">
-              <div className="ai-visualization">
-                <div className="neural-network">
-                  <div className="layer input-layer">
-                    <div className="node"></div>
-                    <div className="node"></div>
-                    <div className="node"></div>
-                    <div className="node"></div>
-                  </div>
-                  <div className="layer hidden-layer">
-                    <div className="node"></div>
-                    <div className="node"></div>
-                    <div className="node"></div>
-                  </div>
-                  <div className="layer output-layer">
-                    <div className="node"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="cta section">
-        <div className="container">
-          <div className="cta-content">
-            <h2 className="cta-title">Ready to Discover New Worlds?</h2>
-            <p className="cta-description">
-              Join the next generation of exoplanet hunters and contribute to our understanding of the universe.
-            </p>
-            <Link to="/upload" className="btn btn-primary btn-large">
-              📤 Start Your Discovery
-            </Link>
-          </div>
-        </div>
-      </section>
+      <DemoModal 
+        isOpen={showDemo} 
+        onClose={() => setShowDemo(false)} 
+      />
+      
+      <InteractiveStory 
+        isOpen={showStory} 
+        onClose={() => setShowStory(false)} 
+      />
+      
+      <ExoplanetHunt 
+        isOpen={showHunt} 
+        onClose={() => setShowHunt(false)} 
+      />
+      
+      <StarExplorer 
+        isOpen={showExplorer} 
+        onClose={() => setShowExplorer(false)} 
+      />
     </div>
   );
 };

@@ -1,131 +1,118 @@
-# ExoDetect - AI Exoplanet Detection Frontend
+# 🌍 Exoplanet Lab - A World Away: Hunting Exoplanets with AI
 
-A modern React frontend for the NASA Space Apps Challenge 2025 exoplanet detection project. This application provides an intuitive interface for uploading transit photometry data, analyzing it with AI/ML models, and exploring confirmed exoplanets.
+A cutting-edge web application for discovering and exploring exoplanets using AI-powered analysis and immersive 3D visualizations. Built for the NASA Space Apps Challenge.
 
 ## 🚀 Features
 
-- **Modern Space-Themed UI**: Beautiful, responsive design with smooth animations
-- **Data Upload Interface**: Drag-and-drop file upload with progress tracking
-- **Interactive Exoplanet Gallery**: Browse and explore confirmed exoplanets with detailed information
-- **Real-time Analysis Results**: View AI model predictions with confidence scores and explanations
-- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
-- **Educational Content**: Learn about exoplanet detection methods and NASA missions
+### 🎯 MVP (Launch Ready)
 
-## 🛠 Tech Stack
+- **Light-Curve Explorer & AI Sandbox**: Upload and analyze stellar brightness data with AI-powered transit detection
+- **Transit Simulator & Orbit Visualizer**: Interactive 3D orbital mechanics with real-time light curve generation
+- **Dataset Dashboard**: Compare data from NASA missions (TESS, Kepler, K2, PLATO) with advanced filtering
+- **Mission Narratives**: Each analysis comes with immersive storytelling elements
 
-- **React 18** - Modern React with hooks and functional components
-- **React Router** - Client-side routing
-- **Framer Motion** - Smooth animations and transitions
-- **Recharts** - Interactive data visualizations
-- **Lucide React** - Beautiful icon library
-- **CSS Variables** - Consistent theming and dark mode support
+### 🌟 Advanced Features
 
-## 📦 Installation
+- **Interactive Storytelling**: Choice-driven narratives about exoplanet discovery with branching storylines
+- **Gamified Exoplanet Hunt**: Real-time transit detection challenge with scoring and achievements
+- **3D Star Explorer**: Navigate interactive star maps and explore real exoplanetary systems
+- **Interactive Hub**: Centralized portal for all interactive experiences with progress tracking
+- **Real-time Analysis**: AI highlights potential transits with confidence scoring
+- **Responsive Design**: Seamless experience from mobile to desktop
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd exoplanet-detection-frontend
-```
+### ✨ Standout Features
 
-2. Install dependencies:
-```bash
-npm install
-```
+- **Interactive 3D Visualizations**: Pure CSS 3D transforms for optimal performance
+- **Gamification Elements**: Achievement system, progress tracking, and competitive scoring
+- **Immersive Storytelling**: Multi-path narratives with scientific accuracy
+- **Educational Gaming**: Learn through interactive challenges and exploration
+- **Cross-Platform**: Mobile-first design that scales to desktop
 
-3. Start the development server:
-```bash
-npm start
-```
+## 🛠️ Technology Stack
 
-4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Frontend**: React 18.2.0, React Router DOM
+- **3D Graphics**: Three.js, React Three Fiber, React Three Drei
+- **Styling**: CSS3 with CSS Variables, Responsive Grid/Flexbox
+- **AI Integration**: Custom algorithms for transit detection
+- **Data Visualization**: Custom SVG charts and 3D representations
 
-## 🏗 Project Structure
+## 🎮 Interactive Components
 
-```
-src/
-├── components/          # Reusable UI components
-│   ├── Navbar.js       # Navigation component
-│   └── Navbar.css      # Navigation styles
-├── pages/              # Main application pages
-│   ├── Home.js         # Landing page
-│   ├── Upload.js       # Data upload interface
-│   ├── Gallery.js      # Exoplanet gallery
-│   ├── Results.js      # Analysis results
-│   ├── About.js        # About page
-│   └── *.css          # Page-specific styles
-├── App.js             # Main application component
-├── App.css            # Global application styles
-├── index.js           # Application entry point
-└── index.css          # Global CSS variables and base styles
-```
+### 3D Planet Visualization
 
-## 🌟 Key Features
+- Real-time rotating planets with procedural textures
+- Atmospheric effects and lighting
+- Interactive controls for exploration
 
-### Home Page
-- Hero section with animated planetary system
-- Feature highlights with interactive cards
-- Technology showcase with neural network visualization
-- Call-to-action sections
+### Solar System Simulator
 
-### Upload Interface
-- Drag-and-drop file upload
-- File validation and preview
-- Progress tracking with animations
-- Support for CSV, FITS, and TXT files
+- Multi-planet orbital mechanics
+- Customizable system parameters
+- Real-time transit visualization
 
-### Exoplanet Gallery
-- Interactive planet cards with hover effects
-- Search and filter functionality
-- Detailed modal views with planetary data
-- Confidence scoring visualization
+### AI Analysis Dashboard
 
-### Results Dashboard
-- Tabbed interface for multiple analyses
-- Interactive light curve charts
-- Confidence scoring with bar charts
-- Detailed AI explanations
+- Upload light curve data (CSV, TXT, FITS)
+- AI-powered transit detection
+- Confidence scoring and detailed analysis
 
-### About Page
-- Team role descriptions
-- NASA mission information
-- Technology stack overview
-- Project impact metrics
+## 🚀 Getting Started
 
-## 🚀 Deployment
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn package manager
+
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone repo link
+   cd Exoplanet
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install --legacy-peer-deps
+   ```
+
+3. **Start the development server**
+
+   ```bash
+   npm start
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
 ### Build for Production
+
 ```bash
 npm run build
 ```
 
-### Deploy to Static Hosting
-The build folder can be deployed to any static hosting service like:
-- Netlify
-- Vercel
-- GitHub Pages
-- AWS S3
+This creates an optimized production build in the `build` folder.
 
-## 🤝 Contributing
+## 🏆 NASA Space Apps Challenge
 
-This project was developed for the NASA Space Apps Challenge 2025. Contributions are welcome!
+This project was developed for the NASA Space Apps Challenge, addressing the challenge of making exoplanet science accessible and engaging through:
+
+- Interactive data visualization
+- AI-powered analysis tools
+- Immersive 3D experiences
+- Educational storytelling
+- Citizen science participation
+
+### Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Submit a pull request
+4. Add tests if applicable
+5. Submit a pull request
 
-## 📄 License
+---
 
-This project is open source and available under the MIT License.
-
-## 🏆 NASA Space Apps Challenge 2025
-
-ExoDetect was created as part of the NASA Space Apps Challenge 2025, focusing on advancing exoplanet detection through AI and machine learning. The project demonstrates the power of combining NASA's space mission data with modern web technologies to create accessible scientific tools.
-
-## 🔗 Related Links
-
-- [NASA Exoplanet Archive](https://exoplanetarchive.ipac.caltech.edu/)
-- [Kepler Mission](https://www.nasa.gov/kepler)
-- [TESS Mission](https://www.nasa.gov/tess-transiting-exoplanet-survey-satellite)
-- [NASA Space Apps Challenge](https://www.spaceappschallenge.org/)
+**Built with ❤️ for space exploration and scientific discovery**
